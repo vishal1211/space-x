@@ -17,4 +17,4 @@ Use the `ng build --prod` flag for a production build.
 
 # Light House Report  
 
-![alt text](https://github.com/vishal1211/XT-Coding-Assignment/blob/master/LightHouse%20Reports/desktop.png)
+![alt text](https://github.com/vishal1211/XT-Coding-Assignment/blob/master/LightHouse%20Reports/desktop1.png)
