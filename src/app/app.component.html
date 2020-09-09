@@ -1,100 +1,116 @@
-
 <div class="container">
   <div class="row   m-0">
     <div class="col-lg-12">
       <h4 class="font-weight-bold">SpaceX Launch Program</h4>
-  
+
     </div>
     <div class="col-lg-2 mb-4 col-md-4">
       <div class="card p-2">
         <h6 class="font-weight-bold">Filters</h6>
-       <div class="d-flex  filter justify-content-center">
-  
-        <div class="">
-  
-          <!-- Launch Year Filter -->
-          <div class="text-center  filter-heading">
-            <div> Launch Year</div>
-            <hr class="mt-0">
-          </div>
-          <div class="d-flex   flex-wrap">
-            <div class="w-50 mb-4" [class.text-right]="odd" *ngFor="let list of yearList;let index=index;odd as odd">
-              <span (click)="selectedYear=list;getSpaceXData()" [class.active-filter]="selectedYear==list"
-                class="filter-box pointer">{{list}}</span>
+        <div class="d-flex w-100 filter justify-content-center">
+
+          <div class="">
+
+            <!-- Launch Year Filter -->
+            <div class="text-center  filter-heading">
+              <div> Launch Year</div>
+              <hr class="mt-0">
             </div>
-          </div>
-  
-          <!-- End Launch Year -->
-  
-          <!-- Successful launch -->
-          <div class="text-center  filter-heading">
-            <div>Successful Launch </div>
-            <hr class="mt-0">
-          </div>
-          <div class="d-flex   flex-wrap">
-            <div class="w-50 mb-4" [class.text-right]="odd"
-              *ngFor="let list of [true,false];let index=index;odd as odd">
-              <span (click)="selectedLaunch=list;getSpaceXData()" [class.active-filter]="selectedLaunch==list"
-                class="filter-box pointer text-capitalize">{{list}}</span>
+
+            <div class="row m-0 d-flex justify-content-center">
+              <div class="col-10 px-lg-0  ">
+                <div class="row m-0">
+                  <div class="col-6   px-0 mb-4" [class.text-right]="odd"
+                    *ngFor="let list of yearList;let index=index;odd as odd">
+                    <span (click)="selectedYear=list;getSpaceXData()" [class.active-filter]="selectedYear==list"
+                      class="filter-box pointer">{{list}}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-  
-          <!-- End successful Launch -->
-  
-          <!-- Start Landing -->
-          <div class="text-center  filter-heading">
-            <div>Successful Landing </div>
-            <hr class="mt-0">
-          </div>
-          <div class="d-flex  flex-wrap">
-            <div class="w-50 mb-2" [class.text-right]="odd"
-              *ngFor="let list of [true,false];let index=index;odd as odd">
-              <span (click)="selectedLanding=list;getSpaceXData()" [class.active-filter]="selectedLanding==list"
-                class="filter-box pointer text-capitalize">{{list}}</span>
+
+
+
+            <!-- End Launch Year -->
+
+            <!-- Successful launch -->
+            <div class="text-center  filter-heading">
+              <div>Successful Launch </div>
+              <hr class="mt-0">
             </div>
-          </div>
-  
-  
+            <div class="row m-0 d-flex justify-content-center">
+              <div class="col-10 px-lg-0  ">
+                <div class="row m-0">
+                  <div class="col-6   px-0 mb-4" [class.text-right]="odd"
+                    *ngFor="let list of [true,false];let index=index;odd as odd">
+                    <span (click)="selectedLaunch=list;getSpaceXData()" [class.active-filter]="selectedLaunch==list"
+                      class="filter-box pointer text-capitalize">{{list}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End successful Launch -->
+
+            <!-- Start Landing -->
+            <div class="text-center  filter-heading">
+              <div>Successful Landing </div>
+              <hr class="mt-0">
+            </div>
+
+            <div class="row m-0 d-flex justify-content-center">
+              <div class="col-10 px-lg-0  ">
+                <div class="row m-0">
+                  <div class="col-6   px-0 mb-4" [class.text-right]="odd"
+                    *ngFor="let list of [true,false];let index=index;odd as odd">
+                    <span (click)="selectedLanding=list;getSpaceXData()" [class.active-filter]="selectedLanding==list"
+                      class="filter-box pointer text-capitalize">{{list}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+ 
+
         </div>
-      
-       </div>
-      </div>
-    </div>
-    <div class="col-lg-10 col-md-8">
-  
-  
-      <div class="row m-0" *ngIf="dataList.length!=0">
-        <div class="col-lg-3 d-flex mb-4 col-md-6" *ngFor="let list of dataList;let index=index;">
-          <div class="card p-4">
-            <div class="img-box">
-              <img class="w-100" src="{{list.links.mission_patch}}" alt="mission-image">
-            </div>
-            <div class="title my-2">
-              {{list.mission_name}} #{{list.flight_number}}
-            </div>
-            <div class="title-heading"> Mission Ids: </div>
-            <ul class="title-text mb-1">
-              <li *ngFor="let missionId of list.mission_id">{{missionId}}</li>
-            </ul>
-            <div class="title-heading"> Launch Year:<span class="title-text">{{list?.launch_year || 'NA'}}</span></div>
-            <div class="title-heading"> Successful Launch:<span class="title-text">{{list?.launch_success || 'NA'}}</span>
-            </div>
-            <div class="title-heading"> Successful Landing:<span
-                class="title-text">{{list?.launch_landing || 'NA'}}</span></div>
-  
-          </div>
-        </div>
-  
-      </div>
-      <div *ngIf="!hasLoader && dataList.length==0" class="h-100 d-flex align-items-center justify-content-center">
-      <h6>No data available.</h6>
-      </div>
-      <div *ngIf="hasLoader" class="h-100 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
+
       </div>
     </div>
   </div>
-  
+  <div class="col-lg-10 col-md-8">
+
+
+    <div class="row m-0" *ngIf="dataList.length!=0">
+      <div class="col-lg-3 px-lg-2 px-0 d-flex mb-4 col-md-6" *ngFor="let list of dataList;let index=index;">
+        <div class="card p-4">
+          <div class="img-box">
+            <img class="w-100" src="{{list.links.mission_patch}}" alt="mission-image">
+          </div>
+          <div class="title my-2">
+            {{list.mission_name}} #{{list.flight_number}}
+          </div>
+          <div class="title-heading"> Mission Ids: </div>
+          <ul class="title-text mb-1">
+            <li *ngFor="let missionId of list.mission_id">{{missionId}}</li>
+          </ul>
+          <div class="title-heading"> Launch Year:<span class="title-text">{{list?.launch_year || 'NA'}}</span></div>
+          <div class="title-heading"> Successful Launch:<span class="title-text">{{list?.launch_success || 'NA'}}</span>
+          </div>
+          <div class="title-heading"> Successful Landing:<span
+              class="title-text">{{list?.launch_landing || 'NA'}}</span></div>
+
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="!hasLoader && dataList.length==0" class="h-100 d-flex align-items-center justify-content-center">
+      <h6>No data available.</h6>
+    </div>
+    <div *ngIf="hasLoader" class="h-100 d-flex align-items-center justify-content-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
