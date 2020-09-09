@@ -18,9 +18,9 @@
             </div>
 
             <div class="row m-0 d-flex justify-content-center">
-              <div class="col-10 col-md-12 px-lg-0  ">
+              <div class="col-lg-12  px-lg-0  ">
                 <div class="row m-0">
-                  <div class="col-6   px-0 mb-4" [class.text-right]="odd"
+                  <div class="col-6  text-center px-0 mb-4" 
                     *ngFor="let list of yearList;let index=index;odd as odd">
                     <span (click)="selectedYear=list;getSpaceXData()" [class.active-filter]="selectedYear==list"
                       class="filter-box pointer">{{list}}</span>
@@ -39,9 +39,9 @@
               <hr class="mt-0">
             </div>
             <div class="row m-0 d-flex justify-content-center">
-              <div class="col-10 col-md-12 px-lg-0  ">
+              <div class="col-lg-12 px-lg-0  ">
                 <div class="row m-0">
-                  <div class="col-6   px-0 mb-4" [class.text-right]="odd"
+                  <div class="col-6  text-center px-0 mb-4"  
                     *ngFor="let list of [true,false];let index=index;odd as odd">
                     <span (click)="selectedLaunch=list;getSpaceXData()" [class.active-filter]="selectedLaunch==list"
                       class="filter-box pointer text-capitalize">{{list}}</span>
@@ -58,9 +58,9 @@
             </div>
 
             <div class="row m-0 d-flex justify-content-center">
-              <div class="col-10 col-md-12 px-lg-0  ">
+              <div class="col-lg-12   px-lg-0  ">
                 <div class="row m-0">
-                  <div class="col-6   px-0 mb-4" [class.text-right]="odd"
+                  <div class="col-6 text-center  px-0 mb-4" 
                     *ngFor="let list of [true,false];let index=index;odd as odd">
                     <span (click)="selectedLanding=list;getSpaceXData()" [class.active-filter]="selectedLanding==list"
                       class="filter-box pointer text-capitalize">{{list}}</span>
